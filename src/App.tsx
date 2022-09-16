@@ -9,8 +9,8 @@ import { Chat } from "./components/Chat";
 import { Header } from "./components/Header";
 import Spinner from "react-spinkit";
 
-function App() {
-  const [user, loading] = useAuthState(auth);
+export const App: React.FC = () => {
+  const [user, loading] = useAuthState(auth as any);
 
   if (loading) {
     return (
@@ -44,9 +44,7 @@ function App() {
       )}
     </BrowserRouter>
   );
-}
-
-export default App;
+};
 
 const AppBody = styled.div`
   display: flex;

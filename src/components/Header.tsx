@@ -7,12 +7,11 @@ import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../firebase";
 
-export function Header() {
-  const [user] = useAuthState(auth);
+export const Header: React.FC = () => {
+  const [user] = useAuthState(auth as any);
 
   return (
     <HeaderContainer>
-      {/* Header Left */}
       <HeaderLeft>
         <HeaderAvatar
           onClick={() => auth.signOut()}
@@ -22,19 +21,17 @@ export function Header() {
         <AccessTimeIcon />
       </HeaderLeft>
 
-      {/* Header Search */}
       <HeaderSearch>
         <SearchIcon />
         <input type="text" placeholder="Slack Search" />
       </HeaderSearch>
 
-      {/* Header Right */}
       <HeaderRight>
         <HelpOutlineIcon />
       </HeaderRight>
     </HeaderContainer>
   );
-}
+};
 
 const HeaderContainer = styled.div`
   display: flex;
@@ -59,7 +56,7 @@ const HeaderLeft = styled.div`
   }
 `;
 
-const HeaderAvatar = styled(Avatar)`
+const HeaderAvatar: any = styled(Avatar)`
   cursor: pointer;
 
   :hover {

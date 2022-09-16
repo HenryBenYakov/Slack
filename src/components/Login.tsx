@@ -3,8 +3,8 @@ import styled from "styled-components";
 import { Button } from "@mui/material";
 import { auth, provider } from "../firebase";
 
-export function Login() {
-  const signIn = (e) => {
+export const Login: React.FC = () => {
+  const signIn = (e: { preventDefault: () => void }) => {
     e.preventDefault();
 
     auth.signInWithPopup(provider).catch((error) => alert(error.message));
@@ -24,7 +24,7 @@ export function Login() {
       </LoginInnerContainer>
     </LoginContainer>
   );
-}
+};
 
 const LoginContainer = styled.div`
   background-color: #f8f8f8;

@@ -1,7 +1,19 @@
 import React from "react";
 import styled from "styled-components";
 
-export function Message({ message, timestamp, user, userImage }) {
+interface Props {
+  message: string;
+  timestamp: any;
+  user: string;
+  userImage: string;
+}
+
+export const Message: React.FC<Props> = ({
+  message,
+  timestamp,
+  user,
+  userImage,
+}) => {
   return (
     <MessageContainer>
       <img src={userImage} alt="" />
@@ -15,7 +27,7 @@ export function Message({ message, timestamp, user, userImage }) {
       </MessageInfo>
     </MessageContainer>
   );
-}
+};
 
 const MessageContainer = styled.div`
   display: flex;

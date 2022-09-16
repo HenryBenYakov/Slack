@@ -9,8 +9,8 @@ import { useCollection, useDocument } from "react-firebase-hooks/firestore";
 import { db } from "../firebase";
 import { Message } from "./Message";
 
-export function Chat() {
-  const chatRef = useRef(null);
+export const Chat: React.FC = () => {
+  const chatRef = useRef<HTMLHeadingElement>(null);
   const roomId = useSelector(selectRoomId);
 
   const [roomDetails] = useDocument(
@@ -39,7 +39,7 @@ export function Chat() {
           <Header>
             <HeaderLeft>
               <h4>
-                <strong>#{roomDetails?.data().name}</strong>
+                <strong>#{roomDetails?.data()?.name}</strong>
               </h4>
               <StarBorderOutlinedIcon />
             </HeaderLeft>
@@ -71,14 +71,14 @@ export function Chat() {
 
           <ChatInput
             chatRef={chatRef}
-            channelName={roomDetails?.data().name}
+            channelName={roomDetails?.data()?.name}
             channelId={roomId}
           />
         </>
       )}
     </ChatContainer>
   );
-}
+};
 
 const ChatContainer = styled.div`
   flex: 0.7;

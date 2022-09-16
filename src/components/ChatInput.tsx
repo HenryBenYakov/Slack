@@ -5,11 +5,21 @@ import { auth, db } from "../firebase";
 import firebase from "firebase/compat/app";
 import { useAuthState } from "react-firebase-hooks/auth";
 
-export function ChatInput({ channelName, channelId, chatRef }) {
-  const [user] = useAuthState(auth);
-  const [input, setInput] = useState("");
+interface Props {
+  channelName: string;
+  channelId: string | null;
+  chatRef: any;
+}
 
-  const sendMessage = (e) => {
+export const ChatInput: React.FC<Props> = ({
+  channelName,
+  channelId,
+  chatRef,
+}) => {
+  const [user] = useAuthState(auth as any);
+  const [input, setInput] = useState<string>("");
+
+  const sendMessage = (e: { preventDefault: () => void }) => {
     e.preventDefault();
 
     if (!channelId) {
@@ -19,8 +29,8 @@ export function ChatInput({ channelName, channelId, chatRef }) {
     db.collection("rooms").doc(channelId).collection("messages").add({
       message: input,
       timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-      user: user.displayName,
-      userImage: user.photoURL,
+      user: user?.displayName,
+      userImage: user?.photoURL,
     });
 
     chatRef.current.scrollIntoView({
@@ -44,7 +54,7 @@ export function ChatInput({ channelName, channelId, chatRef }) {
       </form>
     </ChatInputContainer>
   );
-}
+};
 
 const ChatInputContainer = styled.div`
   border-radius: 20px;
