@@ -18,8 +18,8 @@ import { auth, db } from "../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 
 export function Sidebar() {
-  const [user] = useAuthState(auth as any);
-  const [channels] = useCollection(db.collection("rooms") as any);
+  const [user] = useAuthState(auth);
+  const [channels] = useCollection(db.collection("rooms"));
 
   return (
     <SidebarContainer>

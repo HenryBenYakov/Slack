@@ -7,8 +7,8 @@ import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../firebase";
 
-export const Header: React.FC = () => {
-  const [user] = useAuthState(auth as any);
+export const Header = () => {
+  const [user] = useAuthState(auth);
 
   return (
     <HeaderContainer>
@@ -56,7 +56,7 @@ const HeaderLeft = styled.div`
   }
 `;
 
-const HeaderAvatar: any = styled(Avatar)`
+const HeaderAvatar = styled(Avatar)`
   cursor: pointer;
 
   :hover {

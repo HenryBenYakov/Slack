@@ -1,19 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-interface Props {
-  message: string;
-  timestamp: any;
-  user: string;
-  userImage: string;
-}
-
-export const Message: React.FC<Props> = ({
-  message,
-  timestamp,
-  user,
-  userImage,
-}) => {
+export const Message = ({ message, timestamp, user, userImage }) => {
   return (
     <MessageContainer>
       <img src={userImage} alt="" />

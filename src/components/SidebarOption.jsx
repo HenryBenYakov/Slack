@@ -4,19 +4,7 @@ import styled from "styled-components";
 import { enterRoom } from "../redux/features/appSlice";
 import { db } from "../firebase";
 
-interface Props {
-  Icon?: any;
-  title: string;
-  addChannelOption?: any;
-  id?: string;
-}
-
-export const SidebarOption: React.FC<Props> = ({
-  Icon,
-  title,
-  addChannelOption,
-  id,
-}) => {
+export const SidebarOption = ({ Icon, title, addChannelOption, id }) => {
   const dispatch = useDispatch();
 
   const addChannel = () => {

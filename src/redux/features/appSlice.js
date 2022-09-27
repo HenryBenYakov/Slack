@@ -1,6 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import type { PayloadAction } from "@reduxjs/toolkit";
-import type { RootState } from "../store";
 
 export const appSlice = createSlice({
   name: "app",
@@ -8,7 +6,7 @@ export const appSlice = createSlice({
     roomId: null,
   },
   reducers: {
-    enterRoom: (state, action: PayloadAction<any>) => {
+    enterRoom: (state, action) => {
       state.roomId = action.payload.roomId;
     },
   },
@@ -16,6 +14,6 @@ export const appSlice = createSlice({
 
 export const { enterRoom } = appSlice.actions;
 
-export const selectRoomId = (state: RootState) => state.app.roomId;
+export const selectRoomId = (state) => state.app.roomId;
 
 export default appSlice.reducer;

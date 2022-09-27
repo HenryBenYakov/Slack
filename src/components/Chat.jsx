@@ -1,16 +1,16 @@
 import React, { useEffect, useRef } from "react";
+import { useSelector } from "react-redux";
+import { selectRoomId } from "../redux/features/appSlice";
 import styled from "styled-components";
 import StarBorderOutlinedIcon from "@mui/icons-material/StarBorderOutlined";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
-import { useSelector } from "react-redux";
-import { selectRoomId } from "../redux/features/appSlice";
 import { ChatInput } from "./ChatInput";
 import { useCollection, useDocument } from "react-firebase-hooks/firestore";
 import { db } from "../firebase";
 import { Message } from "./Message";
 
-export const Chat: React.FC = () => {
-  const chatRef = useRef<HTMLHeadingElement>(null);
+export const Chat = () => {
+  const chatRef = useRef < HTMLHeadingElement > null;
   const roomId = useSelector(selectRoomId);
 
   const [roomDetails] = useDocument(

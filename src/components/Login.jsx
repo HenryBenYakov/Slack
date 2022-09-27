@@ -3,8 +3,8 @@ import styled from "styled-components";
 import { Button } from "@mui/material";
 import { auth, provider } from "../firebase";
 
-export const Login: React.FC = () => {
-  const signIn = (e: { preventDefault: () => void }) => {
+export const Login = () => {
+  const signIn = (e) => {
     e.preventDefault();
 
     auth.signInWithPopup(provider).catch((error) => alert(error.message));

@@ -5,21 +5,11 @@ import { auth, db } from "../firebase";
 import firebase from "firebase/compat/app";
 import { useAuthState } from "react-firebase-hooks/auth";
 
-interface Props {
-  channelName: string;
-  channelId: string | null;
-  chatRef: any;
-}
+export const ChatInput = ({ channelName, channelId, chatRef }) => {
+  const [user] = useAuthState(auth);
+  const [input, setInput] = useState("");
 
-export const ChatInput: React.FC<Props> = ({
-  channelName,
-  channelId,
-  chatRef,
-}) => {
-  const [user] = useAuthState(auth as any);
-  const [input, setInput] = useState<string>("");
-
-  const sendMessage = (e: { preventDefault: () => void }) => {
+  const sendMessage = (e) => {
     e.preventDefault();
 
     if (!channelId) {

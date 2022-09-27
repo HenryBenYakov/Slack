@@ -9,8 +9,8 @@ import { Chat } from "./components/Chat";
 import { Header } from "./components/Header";
 import Spinner from "react-spinkit";
 
-export const App: React.FC = () => {
-  const [user, loading] = useAuthState(auth as any);
+export const App = () => {
+  const [user, loading] = useAuthState(auth);
 
   if (loading) {
     return (
